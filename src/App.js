@@ -1,11 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Header from './components/ui/Header';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="container">
+
+
+const App = () => { 
+    // Set Up State with useState/useEffect 
+    const [items, setItems] = useState([])
+    const [loading, setisLoading] = useState(true) ; 
+
+    // Set Up API Call 
+    useEffect(()=> {
+        const fetchCharacters = async () => {
+        const res = await axios('https://www.breakingbadapi.com/api/characters');
   
+        setItems(res.data)
+        setisLoading(false)
+          
+        // console.log(res)
+      }
+      fetchCharacters();
+     
+    },[]) 
+    
+    console.log(items);
+  
+    return (
+    <div className="container">
+
+    <Header />
     </div>
   );
 }
