@@ -1,12 +1,13 @@
 import React from 'react';
 import CharacterItem from './CharacterItem';
+import Spinner from '../ui/Spinner';
 
   // Catch props from App.js
 const CharacterGrid = ({items, loading}) => {
-  // console.log(items, loading);
+ 
   
   return loading? (
-   <>loading</>
+   <Spinner />
    ) :(
     <section className="cards">
 

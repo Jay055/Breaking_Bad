@@ -13,27 +13,30 @@ const App = () => {
     // Set Up State with useState/useEffect 
     const [items, setItems] = useState([])
     const [loading, setisLoading] = useState(true) ; 
+    // set up state for query text 
+    const [query, setQuery] = useState('');
 
     // Set Up API Call 
     useEffect(()=> {
         const fetchCharacters = async () => {
-        const res = await axios('https://www.breakingbadapi.com/api/characters');
+        const res = await axios(
+          `https://www.breakingbadapi.com/api/characters?name=${query}`);
   
         setItems(res.data)
         setisLoading(false)
           
-        // console.log(res)
+       
       }
       fetchCharacters();
      
-    },[]) 
+    },[query]) 
   
   
     return (
     <div className="container">
 
     <Header />
-    <Search />
+    <Search getQuery={((q) => setQuery(q))}/>
     <CharacterGrid items={items} loading={loading} />
     </div>
   );
