@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/ui/Header';
 import {useEffect,useState} from 'react';
 import axios from 'axios';
+import CharacterGrid from './components/character/CharacterGrid';
 
 
 
@@ -25,13 +26,13 @@ const App = () => {
       fetchCharacters();
      
     },[]) 
-    
-    console.log(items);
+  
   
     return (
     <div className="container">
 
     <Header />
+    <CharacterGrid items={items} loading={loading} />
     </div>
   );
 }
