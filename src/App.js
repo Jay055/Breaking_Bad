@@ -5,6 +5,7 @@ import Header from './components/ui/Header';
 import {useEffect,useState} from 'react';
 import axios from 'axios';
 import CharacterGrid from './components/character/CharacterGrid';
+import Search from './components/ui/Search';
 
 
 
@@ -32,6 +33,7 @@ const App = () => {
     <div className="container">
 
     <Header />
+    <Search />
     <CharacterGrid items={items} loading={loading} />
     </div>
   );
